@@ -1,3 +1,3 @@
-# Client Chatbot
+# Telegram Chatbot
 
 Telegram-based chatbot application.
