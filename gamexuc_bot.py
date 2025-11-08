@@ -10,34 +10,29 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
     raise ValueError("❌ BOT_TOKEN not found. Make sure it's set in your .env file.")
 
-# English welcome message
-WELCOME_TEXT_EN = """🚨 UC APOCALYPSE UNLOCKED, LEGEND! 🚨
-GameXuc – Forge Your PUBG Glory! 🎮🔥💥
+# Combined welcome message (English + Russian)
+WELCOME_TEXT = """☠️ GameXuc Reseller Hub ☠️
 
-Yo, champ! VIP access granted for lightning-fast, secure, cheap UC drops via Chinese Method, Midasbuy, Voucher Code, iOS Login, or Huawei Login – crushing lobbies with god-tier skins & instant nukes. BOOM – delivered, no hassle!
+Store for Resellers! 💼🎮
 
-LOCK IN: Reply “UC” + amount (60/325/1800+) + PUBG ID + method, or WhatsApp +92 335 1757574 / Telegram https://t.me/GameXUc
-NEWBIE BOOST: 10% OFF FIRST HAUL!
+Dear Reseller,
 
-DROP HOT & CLAIM DINNER! Your first order? 💀🏆
-Your Battle Squad,
-@RK_Techline
-GameXuc
-"""
+Join our network for exclusive wholesale UC rates, bulk bonuses, and seamless commission payouts.
+Designed to boost your PUBG sales efficiently. Enjoy secure, instant deliveries that scale with your client base.
 
-# Russian welcome message
-WELCOME_TEXT_RU = """🚨 УК АПОКАЛИПСИС РАСКРЫТ, ЛЕГЕНДА! 🚨
-GameXuc – Выковывай Свою PUBG-Славу! 🎮🔥💥
+Reply "Hi" or DM @RK_Techline to access your dealer kit and begin today.
 
-Эй, чемпион! Доступ VIP открыт для молниеносных, надёжных и дешёвых поставок UC через Китайский Метод, Midasbuy, Voucher Code, iOS Login или Huawei Login – раздавливай лобби с богоподобными скинами и мгновенными нуклеарками. БУМ – доставлено, без лишней суеты!
+———————————-
 
-ЗАХВАТИ ПОЗИЦИЮ: Ответь “UC” + сумма (60/325/1800+) + PUBG ID + метод, или WhatsApp +92 335 1757574 / Telegram https://t.me/GameXUc
-БОНУС НОВИЧКА: 10% СКИДКИ НА ПЕРВУЮ ПОДЗАРЯДКУ!
+☠️GameXuc Reseller Hub ☠️
 
-СБРОСЬ ГОРЯЧИМ И ЗАХВАТИ УЖИН! Твой первый заказ? 💀🏆
-Твой Боевой Отряд,
-@RK_Techline
-GameXuc
+Магазин для реселлеров! 💼🎮
+Уважаемый реселлер/дилер,
+
+Присоединяйтесь к нашей сети для эксклюзивных оптовых тарифов UC, бонусов за опт и бесперебойных выплат комиссий 
+всё разработано для эффективного роста ваших продаж PUBG. Наслаждайтесь безопасными, мгновенными доставками, которые масштабируются с вашей клиентской базой.
+
+Ответьте «Hi» или напишите в ЛС @RK_Techline, чтобы получить дилерский набор и начать сегодня.
 """
 
 # WhatsApp contact link
@@ -54,8 +49,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await update.message.reply_text(WELCOME_TEXT_EN, reply_markup=reply_markup)
-    await update.message.reply_text(WELCOME_TEXT_RU)
+    await update.message.reply_text(WELCOME_TEXT, reply_markup=reply_markup)
 
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -69,8 +63,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.message.reply_text(WELCOME_TEXT_EN, reply_markup=reply_markup)
-        await query.message.reply_text(WELCOME_TEXT_RU)
+        await query.message.reply_text(WELCOME_TEXT, reply_markup=reply_markup)
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await start(update, context)
